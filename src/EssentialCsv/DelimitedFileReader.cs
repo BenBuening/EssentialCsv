@@ -115,7 +115,7 @@ namespace EssentialCsv
             while (delimiterCount % 2 > 0)
             {   // if the line has an odd number of quotes, read the next line (odd means the line break is inside a quoted field)
                 string temp = this.Reader.ReadLine();
-                if (temp == null) throw new InvalidFileFormatException("Invalid CSV file format most likely caused by mismatched quotes.");
+                if (temp == null) throw new InvalidFileFormatException("Invalid CSV file format most likely caused by mismatched on non-escaped quotes.");
                 delimiterCount += CountDelimiter(temp, '"');
                 line += Environment.NewLine + temp;
             }
@@ -139,10 +139,25 @@ namespace EssentialCsv
             sourceString = sourceString.Trim(new char[] { ' ', this.Delimiter });
 
             // still have to remove leading and trailing quotes
-            if (sourceString.Length >= 2 && sourceString[0] == '\"' && sourceString[sourceString.Length - 1] == '\"')
-                sourceString = sourceString.Substring(1, sourceString.Length - 2).Replace("\"\"", "\"");
+            if (sourceString.Contains("\""))
+                if (sourceString.Length >= 2 && sourceString[0] == '\"' && sourceString[sourceString.Length - 1] == '\"')
+                {
+                    sourceString = sourceString.Substring(1, sourceString.Length - 2);
+                    AssertQuotesValidity(sourceString);
+                    sourceString = sourceString.Replace("\"\"", "\"");
+                }
+                else
+                    throw new InvalidFileFormatException("Invalid CSV file format caused by quotes in a non-quoted field.");
 
             return sourceString;
+        }
+
+        private void AssertQuotesValidity(string value)
+        {
+            if (value.Length > 1)
+                for (int i = 0; i < value.Length - 1; i++)
+                    if (value[i] == '"' && value[++i] != '"')
+                        throw new InvalidFileFormatException("Invalid CSV file format caused by quotes in a non-quoted field.");
         }
 
 
