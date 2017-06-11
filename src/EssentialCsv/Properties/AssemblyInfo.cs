@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("EssentialCsv")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("this is a fast, tiny, easy to use CSV reader and writer according to the IETF rfc4180 specification for CSVs")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("EssentialCsv")]

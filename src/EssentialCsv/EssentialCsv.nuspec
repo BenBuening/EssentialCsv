@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Benjamin Buening</authors>
+    <owners>Benjamin Buening</owners>
+    <licenseUrl>https://github.com/BenBuening/EssentialCsv/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/BenBuening/EssentialCsv</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>this is a fast, tiny, easy to use CSV reader and writer according to the IETF rfc4180 specification for CSVs</description>
+    <releaseNotes>initial release</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>csv comma separated value EssentialCsv IETF rfc4180</tags>
+  </metadata>
+</package>

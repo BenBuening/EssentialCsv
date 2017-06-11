@@ -157,7 +157,7 @@ namespace EssentialCsv
             if (value.Length > 1)
                 for (int i = 0; i < value.Length - 1; i++)
                     if (value[i] == '"' && value[++i] != '"')
-                        throw new InvalidFileFormatException("Invalid CSV file format caused by quotes in a non-quoted field.");
+                        throw new InvalidFileFormatException("Invalid CSV file format caused by non-escaped quotes inside a quoted field.");
         }
 
 
